@@ -1,0 +1,20 @@
+# This is the base config file
+spring:
+  # Set the profile to dev during a development process
+  profiles:
+    active: dev
+
+  # Set up the maximum file upload size
+  servlet:
+    multipart:
+      max-file-size: 50MB
+# Configure the openAPI for documentation and set defaul procedure media types to application/json
+springdoc:
+  default-produces-media-type: application/json
+
+# Server setup
+server:
+  # configure base API context path and the default server port
+  servlet:
+    context-path: /api/v1/
+  port: 8088

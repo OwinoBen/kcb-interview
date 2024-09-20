@@ -1,0 +1,45 @@
+# this config file inherits from the base file i.e., application.yml
+spring:
+  # configure database connection (use credentials set in the docker compose file)
+  datasource:
+    url: jdbc:postgresql://localhost:5434/kcb_interview_db
+    username: admin
+    password: kcb@2030!.
+    driver-class-name: org.postgresql.Driver
+
+  # working with data and how database queries will be handled
+  jpa:
+    hibernate:
+      ddl-auto: update
+    # disable SQL scripts from being printed in the console during compile time and format the SQL
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  # Mail setup (in this case using mail-dev, you can also use Google or any mail provider of choice on production)
+  mail:
+    host: localhost # use localhost as setup in docker compose
+    port: 1025
+    username: benson
+    password: benson
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: true
+        starttls:
+          enable: true
+        connectiontimeout: 5000
+        timeout : 3000
+        writetimeout: 5000
+
+application:
+  security:
+    jwt:
+      secret-key: z*=suv056gm%+$t7u3&@&u#3)-ygp^eorj%bm%3x3z90=d_r3x
+      expiration: 8640000
+  mailing:
+    frontend:
+      activation-url: http://localhost:4200/activate-acount
